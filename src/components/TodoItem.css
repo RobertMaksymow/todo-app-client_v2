@@ -1,0 +1,22 @@
+.todos__single {
+  border: 1px solid red;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.todos__single--text {
+  background-color: gray;
+  border: 1px solid blue;
+  padding: 5px;
+  font-size: 20px;
+}
+
+.todos__single--text:focus {
+  outline: none;
+}
+
+.icon {
+  margin-left: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
