@@ -3,11 +3,10 @@ import React, { useState, useRef, useEffect } from "react";
 import { FiEdit } from "react-icons/fi";
 import { AiOutlineDelete } from "react-icons/ai";
 import { MdOutlineDone, MdOutlineRemoveDone } from "react-icons/md";
-
 import "./TodoItem.css";
 
 import { Todo } from "../model";
-import TodoList from "./TodoList";
+import SelectPriority from "./SelectPriority";
 
 interface Props {
   todo: Todo;
@@ -89,6 +88,9 @@ const TodoItem = ({ todo, todos, setTodos }: Props) => {
             <MdOutlineDone />
           )}
           done
+        </span>
+        <span className="icon">
+          <SelectPriority todo={todo} />
         </span>
       </div>
     </form>
