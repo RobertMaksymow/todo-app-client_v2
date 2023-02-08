@@ -90,7 +90,7 @@ const TodoItem = ({ todo, todos, setTodos }: Props) => {
           done
         </span>
         <span className="icon">
-          <SelectPriority todo={todo} />
+          <SelectPriority todo={todo} todos={todos} setTodos={setTodos} />
         </span>
       </div>
     </form>
