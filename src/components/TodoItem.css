@@ -5,14 +5,14 @@
 }
 
 .todos__single--text {
-  background-color: gray;
-  border: 1px solid blue;
+  background-color: lightsalmon;
+  border: 5px solid greenyellow;
   padding: 5px;
   font-size: 20px;
 }
 
 .todos__single--text:focus {
-  outline: none;
+  /* outline: none; */
 }
 
 .icon {
