@@ -24,10 +24,14 @@
 }
 
 .input__submit {
-  background-color: black;
+  background-color: rgb(68, 68, 68);
   height: 35px;
   width: 35px;
   border-radius: 10px;
   margin-left: 5px;
   color: white;
+}
+
+.input__submit:hover {
+  background-color: black;
 }

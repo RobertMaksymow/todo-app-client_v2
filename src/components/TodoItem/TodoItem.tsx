@@ -5,7 +5,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { MdOutlineDone, MdOutlineRemoveDone } from "react-icons/md";
 import "./TodoItem.css";
 
-import { Todo } from "../model";
+import { Todo } from "../../model";
 import SelectPriority from "./SelectPriority";
 
 interface Props {

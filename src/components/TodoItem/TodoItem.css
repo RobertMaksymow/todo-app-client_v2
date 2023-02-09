@@ -19,7 +19,7 @@
 }
 
 .todos__single--text:focus {
-  /* outline: none; */
+  outline: none;
 }
 
 .icon {
@@ -33,3 +33,15 @@
   /* background-color: pink; */
   margin: 5px 0;
 }
+
+/* @media (max-width: 560px) {
+  .header {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .header {
+    font-size: 25px;
+  }
+} */

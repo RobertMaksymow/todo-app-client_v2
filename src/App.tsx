@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./App.css";
+import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import InputField from "./components/InputField/InputField";
-import TodoList from "./components/TodoList";
+import TodoList from "./components/TodoList/TodoList";
 import { Todo } from "./model";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
       <Header />
       <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
       <TodoList todos={todos} setTodos={setTodos} />
+      <Footer />
     </div>
   );
 }
