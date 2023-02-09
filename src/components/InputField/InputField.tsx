@@ -29,7 +29,7 @@ const InputField = ({ todo, setTodo, handleAdd }: Props) => {
         placeholder="Gimme something"
       />
       <button className="input__submit" type="submit">
-        Add
+        +
       </button>
     </form>
   );

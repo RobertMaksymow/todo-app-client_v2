@@ -65,7 +65,7 @@ const TodoItem = ({ todo, todos, setTodos }: Props) => {
         </span>
       )}
 
-      <div>
+      <div className="icon__all">
         <span
           className="icon"
           onClick={() => {

@@ -5,19 +5,12 @@
   height: 100vh;
   /* display: flex; */
   /* flex-direction: column; */
-  background-color: lightblue;
+  background-color: rgb(132, 132, 132);
   font-family: "Rajdhani";
   /* align-items: center; */
 }
 
-.header {
-  margin: 50px 0;
-  /* text-align: center;
-  align-items: center; */
-  font-size: x-large;
-}
-
-@media (max-width: 800px) {
+/* @media (max-width: 800px) {
   .header {
     margin: 15px 0;
     font-size: 35px;
@@ -29,10 +22,10 @@
     width: 95%;
   }
   .todos {
-    width: 95%;
+    width: 50%;
   }
   .todos__single {
-    width: 100%;
+    width: 60%;
   }
 }
 
@@ -40,4 +33,4 @@
   .todos__single {
     width: 50%;
   }
-}
+} */

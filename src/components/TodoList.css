@@ -1,5 +1,7 @@
 .todos {
   list-style-type: none;
-  background-color: yellow;
+  margin: auto;
+
+  /* background-color: yellow; */
   border: 1px solid black;
 }
