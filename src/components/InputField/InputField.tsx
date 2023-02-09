@@ -8,7 +8,6 @@ interface Props {
   handleAdd: (event: React.FormEvent) => void;
 }
 
-// const InputField React.FC<Props> = ({ todo, setTodo }) => {
 const InputField = ({ todo, setTodo, handleAdd }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -27,6 +26,7 @@ const InputField = ({ todo, setTodo, handleAdd }: Props) => {
         onChange={(event) => setTodo(event.target.value)}
         ref={inputRef}
         placeholder="Gimme something"
+        data-testid="input_field"
       />
       <button className="input__submit" type="submit">
         +

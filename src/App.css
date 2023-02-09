@@ -3,34 +3,6 @@
 .App {
   width: 100vw;
   height: 100vh;
-  /* display: flex; */
-  /* flex-direction: column; */
   background-color: rgb(132, 132, 132);
   font-family: "Rajdhani";
-  /* align-items: center; */
 }
-
-/* @media (max-width: 800px) {
-  .header {
-    margin: 15px 0;
-    font-size: 35px;
-  }
-}
-
-@media (max-width: 700px) {
-  .input {
-    width: 95%;
-  }
-  .todos {
-    width: 50%;
-  }
-  .todos__single {
-    width: 60%;
-  }
-}
-
-@media (max-width: 1000px) {
-  .todos__single {
-    width: 50%;
-  }
-} */
