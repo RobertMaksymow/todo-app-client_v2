@@ -24,6 +24,7 @@ const TodoItem = ({ todo, todos, setTodos }: Props) => {
         todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
       )
     );
+    
   };
 
   const handleEdit = (event: React.FormEvent, id: number) => {

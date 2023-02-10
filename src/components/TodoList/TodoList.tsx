@@ -26,5 +26,3 @@ const TodoList = ({ todos, setTodos }: Props) => {
 };
 
 export default TodoList;
-
-// ENDED 52 min
