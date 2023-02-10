@@ -1,4 +1,5 @@
 import React from "react";
+import { BsSortDown } from "react-icons/bs";
 import { useRef } from "react";
 import "./InputField.css";
 
@@ -30,6 +31,9 @@ const InputField = ({ todo, setTodo, handleAdd }: Props) => {
       />
       <button className="input__submit" type="submit">
         +
+      </button>
+      <button className="input__submit" type="submit">
+        <BsSortDown />
       </button>
     </form>
   );
