@@ -5,8 +5,8 @@ const baseurl = "/api/todos";
 export const loadTodosAPI = () => {
   const data = fetch(baseurl, { method: "GET" })
     .then((response) => {
-      return response.text();
-      // return response.json();
+      // return response.text();
+      return response.json();
     })
     .catch((error) => {
       // error.text();
@@ -55,7 +55,8 @@ export const deleteTodo = (id: number) => {
     method: "DELETE",
   })
     .then((response) => {
-      return response.text();
+      // return response.text();
+      return response.json();
     })
     .catch((error) => {
       console.log(error);

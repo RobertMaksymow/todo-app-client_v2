@@ -8,8 +8,8 @@ interface Props {
 }
 
 const SelectPriority = ({ todo, todos, setTodos }: Props) => {
-  const [priority, setPriority] = useState<number>(0);
-  console.log("Before handle priority:", priority, typeof priority);
+  const [priority, setPriority] = useState<number>(todo.priority);
+  // console.log("Before handle priority:", priority, typeof priority);
 
   const handlePriorityChange = (event: number) => {
     setPriority(event);
@@ -21,9 +21,9 @@ const SelectPriority = ({ todo, todos, setTodos }: Props) => {
     //HAVE A LOOK AT THIS CODE HERE:
     // todo.priority = priority;
     todo.priority = event;
-    console.log("TEMP", event, typeof event, "PRIORITY", priority);
+    // console.log("TEMP", event, typeof event, "PRIORITY", priority);
   };
-  console.log(todos);
+  // console.log(todos);
   return (
     <span className="priority_selector">
       <select

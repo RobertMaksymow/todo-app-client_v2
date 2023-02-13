@@ -7,6 +7,7 @@ import "./TodoItem.css";
 
 import { Todo } from "../../model";
 import SelectPriority from "./SelectPriority";
+import { deleteTodo, updateTodo } from "../../handlers/handlerAPI";
 
 interface Props {
   todo: Todo;
@@ -18,25 +19,53 @@ const TodoItem = ({ todo, todos, setTodos }: Props) => {
   const [edit, setEdit] = useState<boolean>(false);
   const [editTodo, setEditTodo] = useState<string>(todo.todo);
 
+  const [done, setDone] = useState<boolean>(todo.isCompleted);
+
   const handleDone = (id: number) => {
     setTodos(
       todos.map((todo) =>
         todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
       )
     );
-    
+
+    // updateTodo(todo);
+    updateTodo({
+      id: id,
+      todo: todo.todo,
+      isCompleted: done,
+      priority: todo.priority,
+    });
   };
 
   const handleEdit = (event: React.FormEvent, id: number) => {
+    console.log("Todo to update: ", todo);
     event.preventDefault(); //Prevents screen being refreshed
+
+    // updateTodo(todo).then(() => {
+    //   setTodos(
+    //     todos.map((todo) =>
+    //       todo.id === id ? { ...todo, todo: editTodo } : todo
+    //     )
+    //   );
+    // });
     setTodos(
       todos.map((todo) => (todo.id === id ? { ...todo, todo: editTodo } : todo))
     );
+    console.log("EditTodo: ", editTodo);
+    console.log("Todo after update: ", todo);
+    updateTodo({
+      id: id,
+      todo: editTodo,
+      isCompleted: todo.isCompleted,
+      priority: todo.priority,
+    });
+
     setEdit(false);
   };
 
   const handleDelete = (id: number) => {
     setTodos(todos.filter((todo) => todo.id !== id));
+    deleteTodo(todo.id);
   };
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -82,7 +111,17 @@ const TodoItem = ({ todo, todos, setTodos }: Props) => {
           <AiOutlineDelete />
           delete
         </span>
-        <span className="icon" onClick={() => handleDone(todo.id)}>
+        <span
+          className="icon"
+          onClick={() => {
+            handleDone(todo.id);
+            if (todo.isCompleted) {
+              setDone(true);
+            } else {
+              setDone(false);
+            }
+          }}
+        >
           {todo.isCompleted === true ? (
             <MdOutlineRemoveDone />
           ) : (

@@ -16,25 +16,25 @@ function App() {
     if (todo) {
       setTodos([
         ...todos,
-        { id: Date.now(), todo: todo, isCompleted: false, priority: 0 },
+        { id: Date.now(), todo: todo, isCompleted: false, priority: 1 },
       ]);
       setTodo("");
       createTodoAPI({
         id: Date.now(),
         todo: todo,
         isCompleted: false,
-        priority: 0,
+        priority: 1,
       });
     }
   };
 
   useEffect(() => {
     loadTodosAPI().then((data) => {
-      console.log(data);
-      // setTodos(data);
+      console.log("Loading Data from API: ", data);
+      setTodos(data);
     });
   }, []);
-  console.log(todos);
+  // console.log(todos);
 
   return (
     <div className="App">
