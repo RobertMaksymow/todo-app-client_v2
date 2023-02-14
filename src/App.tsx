@@ -14,16 +14,17 @@ function App() {
   const handleAdd = (event: React.FormEvent) => {
     event.preventDefault();
     if (todo) {
-      setTodos([
-        ...todos,
-        { id: Date.now(), todo: todo, isCompleted: false, priority: 1 },
-      ]);
-      setTodo("");
       createTodoAPI({
         id: Date.now(),
         todo: todo,
         isCompleted: false,
         priority: 1,
+      }).then(() => {
+        setTodos([
+          ...todos,
+          { id: Date.now(), todo: todo, isCompleted: false, priority: 1 },
+        ]);
+        setTodo("");
       });
     }
   };
@@ -47,3 +48,5 @@ function App() {
 }
 
 export default App;
+
+//check useContext hook

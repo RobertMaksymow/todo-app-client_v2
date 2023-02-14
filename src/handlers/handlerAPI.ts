@@ -34,7 +34,7 @@ export const createTodoAPI = (todo: Todo) => {
     });
 };
 
-export const updateTodo = (todo: Todo) => {
+export const updateTodoAPI = (todo: Todo) => {
   console.log("UPDATE TODO: ", todo);
   return fetch(`${baseurl}/${todo.id}`, {
     method: "PUT",
@@ -50,7 +50,7 @@ export const updateTodo = (todo: Todo) => {
   }).then((response) => response.json());
 };
 
-export const deleteTodo = (id: number) => {
+export const deleteTodoAPI = (id: number) => {
   return fetch(`${baseurl}/${id}`, {
     method: "DELETE",
   })

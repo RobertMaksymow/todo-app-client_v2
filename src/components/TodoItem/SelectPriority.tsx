@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Todo } from "../../model";
+import { updateTodoAPI } from "../../handlers/handlerAPI";
 
 interface Props {
   todo: Todo;
@@ -7,12 +8,21 @@ interface Props {
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
 }
 
-const SelectPriority = ({ todo, todos, setTodos }: Props) => {
+const SelectPriority = ({ todo }: Props) => {
   const [priority, setPriority] = useState<number>(todo.priority);
   // console.log("Before handle priority:", priority, typeof priority);
 
   const handlePriorityChange = (event: number) => {
     setPriority(event);
+
+    console.log("EVENT", event, typeof event, "CURRENT PRIORITY", priority);
+
+    updateTodoAPI({
+      id: todo.id,
+      todo: todo.todo,
+      isCompleted: todo.isCompleted,
+      priority: event,
+    }).then(() => {});
 
     //HAVE A LOOK AT THIS CODE HERE:
     // setTodos(
@@ -20,8 +30,7 @@ const SelectPriority = ({ todo, todos, setTodos }: Props) => {
     // );
     //HAVE A LOOK AT THIS CODE HERE:
     // todo.priority = priority;
-    todo.priority = event;
-    // console.log("TEMP", event, typeof event, "PRIORITY", priority);
+    // todo.priority = event;
   };
   // console.log(todos);
   return (
