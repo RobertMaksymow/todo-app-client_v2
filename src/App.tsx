@@ -17,12 +17,12 @@ function App() {
       createTodoAPI({
         id: Date.now(),
         todo: todo,
-        isCompleted: false,
+        is_completed: false,
         priority: 1,
       }).then(() => {
         setTodos([
           ...todos,
-          { id: Date.now(), todo: todo, isCompleted: false, priority: 1 },
+          { id: Date.now(), todo: todo, is_completed: false, priority: 1 },
         ]);
         setTodo("");
       });

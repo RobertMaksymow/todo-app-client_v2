@@ -24,7 +24,7 @@ export const createTodoAPI = (todo: Todo) => {
     body: JSON.stringify({
       id: todo.id,
       todo: todo.todo,
-      is_completed: todo.isCompleted,
+      is_completed: todo.is_completed,
       priority: todo.priority,
     }),
   })
@@ -44,7 +44,7 @@ export const updateTodoAPI = (todo: Todo) => {
     body: JSON.stringify({
       id: todo.id,
       todo: todo.todo,
-      is_completed: todo.isCompleted,
+      is_completed: todo.is_completed,
       priority: todo.priority,
     }),
   }).then((response) => response.json());

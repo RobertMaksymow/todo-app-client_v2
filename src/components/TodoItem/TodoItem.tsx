@@ -19,27 +19,27 @@ const TodoItem = ({ todo, todos, setTodos }: Props) => {
   const [edit, setEdit] = useState<boolean>(false);
   const [editTodo, setEditTodo] = useState<string>(todo.todo);
 
-  const [done, setDone] = useState<boolean>(todo.isCompleted);
+  const [done, setDone] = useState<boolean>(todo.is_completed);
 
   const handleDone = (id: number) => {
-    console.log("TODO BEFORE DONE", todo);
-    updateTodoAPI(
-      //   {
-      //   id: id,
-      //   todo: todo.todo,
-      //   isCompleted: done,
-      //   priority: todo.priority,
-      // }
-      todo
-    );
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
-      )
-    );
+    // setTodos(
+    //   todos.map((todo) =>
+    //     todo.id === id ? { ...todo, is_completed: !todo.is_completed } : todo
+    //   )
+    // );
 
-    console.log("DONE: ", done);
-    console.log("isCompleted: ", todo.todo, todo.isCompleted);
+    updateTodoAPI({
+      id: id,
+      todo: todo.todo,
+      is_completed: !todo.is_completed,
+      priority: todo.priority,
+    }).then(() => {
+      setTodos(
+        todos.map((todo) =>
+          todo.id === id ? { ...todo, is_completed: !done } : todo
+        )
+      );
+    });
   };
 
   const handleEdit = (event: React.FormEvent, id: number) => {
@@ -49,7 +49,7 @@ const TodoItem = ({ todo, todos, setTodos }: Props) => {
     updateTodoAPI({
       id: id,
       todo: editTodo,
-      isCompleted: todo.isCompleted,
+      is_completed: todo.is_completed,
       priority: todo.priority,
     }).then(() => {
       setTodos(
@@ -83,7 +83,7 @@ const TodoItem = ({ todo, todos, setTodos }: Props) => {
           ref={inputRef}
           onChange={(event) => setEditTodo(event.target.value)}
         />
-      ) : todo.isCompleted ? (
+      ) : todo.is_completed ? (
         <s className="todos__single--text">
           {todo.id}: {todo.todo}
         </s>
@@ -97,7 +97,7 @@ const TodoItem = ({ todo, todos, setTodos }: Props) => {
         <span
           className="icon"
           onClick={() => {
-            if (!edit && !todo.isCompleted) {
+            if (!edit && !todo.is_completed) {
               setEdit(!edit);
             }
           }}
@@ -112,7 +112,7 @@ const TodoItem = ({ todo, todos, setTodos }: Props) => {
         <span
           className="icon"
           onClick={() => {
-            if (todo.isCompleted) {
+            if (todo.is_completed) {
               setDone(true);
             } else {
               setDone(false);
@@ -120,7 +120,7 @@ const TodoItem = ({ todo, todos, setTodos }: Props) => {
             handleDone(todo.id);
           }}
         >
-          {todo.isCompleted === true ? (
+          {todo.is_completed === true ? (
             <MdOutlineRemoveDone />
           ) : (
             <MdOutlineDone />

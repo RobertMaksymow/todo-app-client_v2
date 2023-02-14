@@ -10,33 +10,23 @@ interface Props {
 
 const SelectPriority = ({ todo }: Props) => {
   const [priority, setPriority] = useState<number>(todo.priority);
-  // console.log("Before handle priority:", priority, typeof priority);
 
   const handlePriorityChange = (event: number) => {
     setPriority(event);
 
-    console.log("EVENT", event, typeof event, "CURRENT PRIORITY", priority);
-
     updateTodoAPI({
       id: todo.id,
       todo: todo.todo,
-      isCompleted: todo.isCompleted,
+      is_completed: todo.is_completed,
       priority: event,
     }).then(() => {});
-
-    //HAVE A LOOK AT THIS CODE HERE:
-    // setTodos(
-    //   todos.map((todo) => (todo.id === id ? { ...todo, todo: priority } : todo))
-    // );
-    //HAVE A LOOK AT THIS CODE HERE:
-    // todo.priority = priority;
-    // todo.priority = event;
   };
-  // console.log(todos);
+
   return (
     <span className="priority_selector">
       <select
         value={priority}
+        disabled={todo.is_completed}
         onChange={(event) => handlePriorityChange(Number(event.target.value))}
       >
         <option value={0}>Low</option>
