@@ -18,34 +18,12 @@ interface Props {
 const TodoItem = ({ todo, todos, setTodos }: Props) => {
   const [edit, setEdit] = useState<boolean>(false);
   const [editTodo, setEditTodo] = useState<string>(todo.todo);
-
   const [done, setDone] = useState<boolean>(todo.is_completed);
 
-  const handleDone = (id: number) => {
-    // setTodos(
-    //   todos.map((todo) =>
-    //     todo.id === id ? { ...todo, is_completed: !todo.is_completed } : todo
-    //   )
-    // );
-
-    updateTodoAPI({
-      id: id,
-      todo: todo.todo,
-      is_completed: !todo.is_completed,
-      priority: todo.priority,
-    }).then(() => {
-      setTodos(
-        todos.map((todo) =>
-          todo.id === id ? { ...todo, is_completed: !done } : todo
-        )
-      );
-    });
-  };
-
+  // TASK EDIT
   const handleEdit = (event: React.FormEvent, id: number) => {
     console.log("Todo to update: ", todo);
     event.preventDefault(); //Prevents screen being refreshed
-
     updateTodoAPI({
       id: id,
       todo: editTodo,
@@ -61,15 +39,32 @@ const TodoItem = ({ todo, todos, setTodos }: Props) => {
     });
   };
 
+  const inputRef = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, [edit]);
+
+  // TASK DELETE
   const handleDelete = (id: number) => {
     setTodos(todos.filter((todo) => todo.id !== id));
     deleteTodoAPI(todo.id);
   };
 
-  const inputRef = useRef<HTMLInputElement>(null);
-  useEffect(() => {
-    inputRef.current?.focus();
-  }, [edit]);
+  // TASK DONE
+  const handleDone = (id: number) => {
+    updateTodoAPI({
+      id: id,
+      todo: todo.todo,
+      is_completed: !todo.is_completed,
+      priority: todo.priority,
+    }).then(() => {
+      setTodos(
+        todos.map((todo) =>
+          todo.id === id ? { ...todo, is_completed: !done } : todo
+        )
+      );
+    });
+  };
 
   return (
     <form

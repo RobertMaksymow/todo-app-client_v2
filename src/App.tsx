@@ -10,6 +10,15 @@ import { Todo } from "./model";
 function App() {
   const [todo, setTodo] = useState<string>("");
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [sortByPriorityClick, setSortByPriorityClick] =
+    useState<boolean>(false);
+
+  useEffect(() => {
+    loadTodosAPI().then((data) => {
+      console.log("Loading Data from API: ", data);
+      setTodos(data);
+    });
+  }, []);
 
   const handleAdd = (event: React.FormEvent) => {
     event.preventDefault();
@@ -30,17 +39,26 @@ function App() {
   };
 
   useEffect(() => {
-    loadTodosAPI().then((data) => {
-      console.log("Loading Data from API: ", data);
-      setTodos(data);
-    });
-  }, []);
-  // console.log(todos);
+    const sortByPriority = () => {
+      const sorted = todos.sort((a, b) => {
+        return b.priority - a.priority;
+      });
+      setTodos(sorted);
+    };
+    sortByPriority();
+    console.log("Sorted", todos);
+  }, [sortByPriorityClick, todos]);
 
   return (
     <div className="App">
       <Header />
-      <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
+      <InputField
+        todo={todo}
+        setTodo={setTodo}
+        handleAdd={handleAdd}
+        sortByPriorityClick={sortByPriorityClick}
+        setSortByPriorityClick={setSortByPriorityClick}
+      />
       <TodoList todos={todos} setTodos={setTodos} />
       <Footer />
     </div>
