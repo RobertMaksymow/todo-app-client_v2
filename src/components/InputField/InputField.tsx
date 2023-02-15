@@ -37,7 +37,12 @@ const InputField = ({
         placeholder="Gimme something"
         data-testid="input_field"
       />
-      <button className="input__submit" type="submit" title="Add new task">
+      <button
+        className="input__submit"
+        type="submit"
+        title="Add new task"
+        data-testid="button_add"
+      >
         +
       </button>
       <button className="input__submit" type="submit" title="Sort by priority">
